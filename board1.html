@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Canvas</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the drag zone and canvas */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        #image-canvas {
+            border: 3px dashed #cbd5e1; /* Slate-300 for dashed border */
+            background-color: #ffffff;
+            cursor: crosshair;
+            touch-action: none; /* Disable default touch actions for custom drag logic */
+        }
+        /* Style for the draggable images */
+        .draggable-image {
+            cursor: grab;
+            transition: transform 0.1s ease;
+        }
+        .draggable-image:active {
+            cursor: grabbing;
+        }
+        /* Hide the default drag image that the browser creates */
+        .dragging {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-4xl bg-white shadow-xl rounded-2xl p-6 md:p-10">
+        <h1 class="text-3xl font-extrabold text-gray-800 mb-6 border-b pb-2">Image Sandbox</h1>
+        
+        <div class="flex flex-col lg:flex-row gap-6">
+
+            <!-- 1. Draggable Image Palette -->
+            <div class="lg:w-1/4 p-4 bg-gray-50 rounded-xl shadow-inner">
+                <h2 class="text-lg font-semibold text-gray-700 mb-3">Image Palette</h2>
+                <div id="palette" class="flex flex-wrap lg:flex-col gap-3">
+                    <!-- Image 1 -->
+                    <img class="draggable-image w-16 h-16 object-cover rounded-lg shadow-md hover:ring-2 ring-blue-500"
+                        src="https://placehold.co/100x100/38bdf8/ffffff?text=Icon+A"
+                        alt="Draggable icon A" draggable="true" data-type="A"
+                        onerror="this.src='https://placehold.co/100x100/38bdf8/ffffff?text=A'">
+                    <!-- Image 2 -->
+                    <img class="draggable-image w-16 h-16 object-cover rounded-lg shadow-md hover:ring-2 ring-pink-500"
+                        src="https://placehold.co/100x100/ec4899/ffffff?text=Icon+B"
+                        alt="Draggable icon B" draggable="true" data-type="B"
+                        onerror="this.src='https://placehold.co/100x100/ec4899/ffffff?text=B'">
+                    <!-- Image 3 -->
+                    <img class="draggable-image w-16 h-16 object-cover rounded-lg shadow-md hover:ring-2 ring-green-500"
+                        src="https://placehold.co/100x100/22c55e/ffffff?text=Icon+C"
+                        alt="Draggable icon C" draggable="true" data-type="C"
+                        onerror="this.src='https://placehold.co/100x100/22c55e/ffffff?text=C'">
+                </div>
+            </div>
+
+            <!-- 2. Canvas Drop Zone -->
+            <div class="lg:w-3/4 flex flex-col items-center justify-center">
+                <h2 class="text-lg font-semibold text-gray-700 mb-3">Drop Zone (Canvas)</h2>
+                <!-- The Canvas element -->
+                <canvas id="image-canvas" width="600" height="400"
+                    class="w-full h-auto max-w-full rounded-2xl shadow-xl transition duration-300 hover:shadow-2xl">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <button id="clear-button" class="mt-4 px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition duration-150">
+                    Clear Canvas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('image-canvas');
+            const ctx = canvas.getContext('2d');
+            const clearButton = document.getElementById('clear-button');
+            const draggableImages = document.querySelectorAll('.draggable-image');
+            
+            // State to hold the images currently drawn on the canvas
+            // Format: [{ image: ImageObject, x: number, y: number, width: number, height: number }]
+            let placedImages = [];
+            
+            // --- Drag-Within-Canvas State ---
+            let isDragging = false;
+            let draggedImageIndex = -1;
+            let dragOffsetX = 0;
+            let dragOffsetY = 0;
+
+            // --- Utility Functions ---
+
+            // Helper to get scaled canvas coordinates (for mouse and touch)
+            function getCanvasCoordinates(clientX, clientY) {
+                const rect = canvas.getBoundingClientRect();
+                // Scaling factors to convert CSS pixels to internal canvas pixels (600x400)
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                return {
+                    x: (clientX - rect.left) * scaleX,
+                    y: (clientY - rect.top) * scaleY
+                };
+            }
+
+            // Check if coordinates hit an image (iterating backwards ensures topmost image is selected)
+            function hitTest(x, y) {
+                for (let i = placedImages.length - 1; i >= 0; i--) {
+                    const imgData = placedImages[i];
+                    if (x >= imgData.x && x <= imgData.x + imgData.width &&
+                        y >= imgData.y && y <= imgData.y + imgData.height) {
+                        return i; // Return the index of the hit image
+                    }
+                }
+                return -1;
+            }
+
+            // --- Canvas Initialization and Drawing ---
+
+            // Function to redraw all placed images
+            function drawCanvas() {
+                // Clear the entire canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Redraw all images
+                placedImages.forEach(imgData => {
+                    ctx.drawImage(imgData.image, imgData.x, imgData.y, imgData.width, imgData.height);
+                });
+            }
+
+            // Function to handle canvas resizing (ensures responsiveness)
+            function resizeCanvas() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                const oldWidth = canvas.width;
+                const oldHeight = canvas.height;
+
+                // Set the canvas rendering size based on the parent width (maintaining aspect ratio)
+                canvas.style.width = '100%';
+                canvas.style.height = `${rect.width * (oldHeight / oldWidth)}px`;
+
+                drawCanvas(); 
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas(); 
+            
+            // --- External Drag (from Image Palette) ---
+
+            let draggedImageSrc = null;
+
+            draggableImages.forEach(img => {
+                img.addEventListener('dragstart', (e) => {
+                    draggedImageSrc = e.target.src;
+                    e.dataTransfer.setData('text/plain', draggedImageSrc);
+                    e.target.classList.add('dragging');
+                });
+                img.addEventListener('dragend', (e) => {
+                    e.target.classList.remove('dragging');
+                });
+            });
+
+            // 1. Prevent default behavior to allow dropping
+            canvas.addEventListener('dragover', (e) => {
+                e.preventDefault(); 
+                e.dataTransfer.dropEffect = 'copy';
+            });
+
+            // 2. Handle the drop event (Placing a NEW image)
+            canvas.addEventListener('drop', (e) => {
+                e.preventDefault();
+                
+                const { x: canvasX, y: canvasY } = getCanvasCoordinates(e.clientX, e.clientY);
+                let imageSource = draggedImageSrc || e.dataTransfer.getData('text/plain');
+
+                if (imageSource) {
+                    const img = new Image();
+                    img.crossOrigin = "Anonymous";
+                    img.onload = () => {
+                        const imgWidth = 50; 
+                        const imgHeight = 50;
+                        
+                        // Add image data to the state array (center the image on the mouse drop point)
+                        placedImages.push({
+                            image: img,
+                            x: canvasX - (imgWidth / 2),
+                            y: canvasY - (imgHeight / 2),
+                            width: imgWidth,
+                            height: imgHeight,
+                        });
+                        
+                        drawCanvas();
+                    };
+                    img.onerror = () => {
+                        console.error('Failed to load image:', imageSource);
+                    };
+                    img.src = imageSource;
+                }
+                draggedImageSrc = null;
+            });
+            
+            // --- Drag-Within-Canvas Logic (Moving an existing image) ---
+
+            // Start dragging (Mouse and Touch)
+            function startDrag(clientX, clientY) {
+                const { x: canvasX, y: canvasY } = getCanvasCoordinates(clientX, clientY);
+                draggedImageIndex = hitTest(canvasX, canvasY);
+
+                if (draggedImageIndex !== -1) {
+                    isDragging = true;
+                    const imgData = placedImages[draggedImageIndex];
+                    
+                    // Calculate offset (mouse position relative to image's top-left corner)
+                    dragOffsetX = canvasX - imgData.x;
+                    dragOffsetY = canvasY - imgData.y;
+                    
+                    // Bring the dragged image to the front of the drawing order
+                    const draggedItem = placedImages.splice(draggedImageIndex, 1)[0];
+                    placedImages.push(draggedItem);
+                    draggedImageIndex = placedImages.length - 1; // Update index after reordering
+                    
+                    canvas.style.cursor = 'grabbing';
+                } else {
+                    canvas.style.cursor = 'crosshair';
+                }
+            }
+
+            // Dragging action (Mouse and Touch)
+            function moveDrag(clientX, clientY) {
+                if (!isDragging || draggedImageIndex === -1) return;
+
+                const { x: canvasX, y: canvasY } = getCanvasCoordinates(clientX, clientY);
+                const imgData = placedImages[draggedImageIndex];
+
+                // Calculate new position by subtracting the offset
+                imgData.x = canvasX - dragOffsetX;
+                imgData.y = canvasY - dragOffsetY;
+
+                drawCanvas();
+            }
+
+            // Stop dragging (Mouse and Touch)
+            function endDrag() {
+                isDragging = false;
+                draggedImageIndex = -1;
+                canvas.style.cursor = 'crosshair';
+            }
+            
+            // Mouse Event Listeners for dragging placed images
+            canvas.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY));
+            document.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
+            document.addEventListener('mouseup', endDrag);
+
+            // Touch Event Listeners for dragging placed images (Mobile Support)
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault(); 
+                if (e.touches.length === 1) {
+                    startDrag(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: false }); // passive: false needed for preventDefault
+
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault(); 
+                if (e.touches.length === 1) {
+                    moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: false }); // passive: false needed for preventDefault
+
+            document.addEventListener('touchend', endDrag);
+            document.addEventListener('touchcancel', endDrag);
+
+            // --- Clear Button Handler ---
+            clearButton.addEventListener('click', () => {
+                if (placedImages.length > 0) {
+                    placedImages = [];
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    // Redraw the initial message
+                    ctx.font = '24px Inter';
+                    ctx.fillStyle = '#94a3b8'; // Slate-400
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Drag icons from the left onto this canvas.', canvas.width / 2, canvas.height / 2);
+                }
+            });
+
+            // --- Initial Canvas Setup ---
+            drawCanvas(); // Draw initial, empty state
+
+            // Optional: Draw a message on the canvas initially
+            ctx.font = '24px Inter';
+            ctx.fillStyle = '#94a3b8'; // Slate-400
+            ctx.textAlign = 'center';
+            ctx.fillText('Drag icons from the left onto this canvas.', canvas.width / 2, canvas.height / 2);
+        });
+    </script>
+</body>
+</html>

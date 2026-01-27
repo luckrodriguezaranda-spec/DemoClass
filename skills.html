@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial scale=1.0">
+        <title>Skills</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+            function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}</script>
+    </head>
+
+    <body>
+        <div class="header">
+            <header>
+                <a href="index.html">
+                    <img id="log" src= "images/l1.png">
+                </a>
+                
+                <div class="dropdown"> 
+                   <button onclick="myFunction()" class="dropbtn" id="menu"><img id="mn" src="Images/social/menu.png"></button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="createboard.html"> create a board </a>
+
+                                <a href="beauty.html"> beauty </a>
+
+                                <a href="fashion.html"> fashion</a>
+
+                                <a href="relationships.html">relationships</a>
+
+                                <a href="hobbies.html"> hobbies</a>
+
+                                <a href=pets.html> pets</a>
+
+                                <a href="skills.html">skills</a>
+
+                                <a href="knowledge.html">knowledge</a>
+
+                                <a href="money.html">money</a>
+
+                                <a href="emotions.html">emotions</a>
+
+                                <a href="exercise.html">exercise</a>
+                    </div>
+                </div>
+                <hr>
+            </header>
+        </div>
+         <div class="row">
+                <div class="column">
+                 
+                    <img src= "Images/Skills/s1.jpg">
+                    <img src= "Images/Skills/s2.jpg">
+                    <img src= "Images/Skills/s3.jpg">
+                    <img src= "Images/Skills/s4.jpg">
+                    <img src= "Images/Skills/s5.jpg">
+                </div>
+                
+                <div class="column">
+                    <img src= "Images/Skills/s6.jpg">
+                    <img src= "Images/Skills/s7.jpg">
+                    <img src= "Images/Skills/s8.jpg">
+                    <img src= "Images/Skills/s9.jpg">
+                    <img src= "Images/Skills/s10.jpg">
+                </div>
+            </div>
+
+
+        
+        <div class="footer">
+            <footer>
+                <p> 2025 </p>
+                <p class="ftext"> All images are from public domain or taken by MyVisionBoard</p>
+                <p class="ftext"> lilylav1111@gmail.com</p>
+                <a href="https://www.instagram.com/myvisionboard_mvb/">
+                    <img src="images/social/ig.png" class="social">
+                </a>
+                <a href="https://mx.pinterest.com/myvisionboard_mvb/"/>
+                    <img src="images/social/pinterest.png" class="social">
+                <img src="images/social/mail.png" class="social">
+
+            </footer>
+        </div>
+  </body>
+
+</html>
+
+
+
+
+

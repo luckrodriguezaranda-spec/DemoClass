@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-File Viewer</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        /* Style for active menu item */
+        .nav-item.active {
+            background-color: #3b82f6; /* Blue-500 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+        .nav-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .content-card {
+            min-height: 400px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen">
+
+
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10">
+        <h1 class="text-3xl font-extrabold text-gray-800 mb-8 border-b pb-2">10-File HTML Viewer</h1>
+       
+        <div class="flex flex-col lg:flex-row gap-6">
+
+
+            <!-- 1. Navigation Menu (Simulated Bootstrap Pills/Tabs) -->
+            <nav class="lg:w-1/4">
+                <h2 class="text-lg font-semibold text-gray-700 mb-3">HTML Files</h2>
+                <div id="file-menu" class="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-hidden p-1 bg-gray-50 rounded-lg shadow-inner">
+                    <!-- Menu items will be injected here by JavaScript -->
+                </div>
+            </nav>
+
+
+            <!-- 2. Content Display Area -->
+            <main class="lg:w-3/4">
+                <div id="content-display" class="content-card p-6 bg-gray-50 border border-gray-200 rounded-xl shadow-lg transition duration-300">
+                    <p class="text-gray-500">Select a file from the menu to view its content.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuContainer = document.getElementById('file-menu');
+            const contentDisplay = document.getElementById('content-display');
+           
+            // --- Simulated Content Data for 10 Files ---
+            // In a real application, you would use 'fetch' here to load these files from a server.
+            const fileContents = [
+                { title: "Dashboard Overview", content: "<h3>File 1: Dashboard Overview</h3><p>This section provides a summary of daily metrics and key performance indicators.</p><ul><li>Active Users: 1,200</li><li>Revenue (Today): $5,400</li><li>Conversion Rate: 3.2%</li></ul>" },
+                { title: "User Settings", content: "<h3>File 2: User Settings</h3><p>Manage your profile information, password, and email preferences here. All settings are saved automatically.</p>" },
+                { title: "Project Alpha", content: "<h3>File 3: Project Alpha Details</h3><p>The alpha phase focuses on market testing and initial feedback collection. The next milestone is due Friday.</p>" },
+                { title: "Team Collaboration", content: "<h3>File 4: Team Collaboration Guide</h3><p>Follow these guidelines for effective communication: Use Slack for quick questions, and email for formal reports. All documents should be stored in the shared drive.</p>" },
+                { title: "API Documentation", content: "<h3>File 5: API Documentation</h3><p>Endpoints are available at <code>/v1/data</code> and <code>/v1/users</code>. Authentication requires a valid Bearer token.</p>" },
+                { title: "Billing and Invoices", content: "<h3>File 6: Billing Information</h3><p>All subscription details and past invoices are listed below. Contact support for any payment issues.</p>" },
+                { title: "Support Tickets", content: "<h3>File 7: Open Support Tickets</h3><p>There are currently 45 tickets awaiting resolution. Priority tickets should be addressed within 2 hours.</p>" },
+                { title: "Marketing Strategy", content: "<h3>File 8: Q4 Marketing Strategy</h3><p>The focus this quarter is on social media engagement and targeted ad campaigns in the APAC region.</p>" },
+                { title: "Deployment Log", content: "<h3>File 9: Latest Deployment Log</h3><p>Deployment successful on 2025-11-20 at 14:30 UTC. New features include responsive design updates.</p>" },
+                { title: "Terms & Conditions", content: "<h3>File 10: Terms & Conditions</h3><p>By using this service, you agree to comply with all terms outlined in this document.</p>" }
+            ];
+
+
+            let activeIndex = -1;
+
+
+            // --- Function to Display Content ---
+            function displayContent(index) {
+                if (index < 0 || index >= fileContents.length) return;
+
+
+                // 1. Update Menu Styling (Remove 'active' from old, add to new)
+                const menuItems = menuContainer.querySelectorAll('.nav-item');
+                if (activeIndex !== -1 && activeIndex < menuItems.length) {
+                    menuItems[activeIndex].classList.remove('active', 'bg-blue-500', 'text-white');
+                    menuItems[activeIndex].classList.add('bg-white', 'text-gray-700', 'hover:bg-blue-50', 'hover:text-blue-700');
+                }
+               
+                // Add active style to the new item
+                menuItems[index].classList.add('active', 'bg-blue-500', 'text-white');
+                menuItems[index].classList.remove('bg-white', 'text-gray-700', 'hover:bg-blue-50', 'hover:text-blue-700');
+               
+                activeIndex = index;
+
+
+                // 2. Update Content Display
+                contentDisplay.innerHTML = fileContents[index].content;
+            }
+
+
+            // --- Function to Initialize Menu ---
+            function initializeMenu() {
+                fileContents.forEach((file, index) => {
+                    const menuItem = document.createElement('a');
+                    menuItem.href = '#';
+                    menuItem.classList.add(
+                        'nav-item',
+                        'px-4', 'py-2', 'rounded-lg', 'text-sm', 'font-medium',
+                        'bg-white', 'text-gray-700', 'shadow-sm',
+                        'hover:bg-blue-50', 'hover:text-blue-700',
+                        'w-full' // Full width in vertical layout
+                    );
+                    menuItem.textContent = file.title;
+                    menuItem.setAttribute('data-index', index);
+
+
+                    menuItem.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        displayContent(index);
+                    });
+
+
+                    menuContainer.appendChild(menuItem);
+                });
+
+
+                // Display the first item by default
+                if (fileContents.length > 0) {
+                    displayContent(0);
+                }
+            }
+
+
+            // Start the application
+            initializeMenu();
+        });
+    </script>
+</body>
+</html>
+
+
