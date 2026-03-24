@@ -1,18 +1,26 @@
+#log {
+  width: 10%;
+  float: left;
+}
 
-#log {width: 10%;
-  float: left;}
+#mn {
+  width: 20%;
+  float: left
+}
 
-#mn {width: 20%;
-  float: left}
-
-#mn {width: 10%;
-  float: top left;}
-
+#mn {
+  width: 10%;
+  float: top left;
+}
 
 
-.ok {display: flex;}
 
-.left {position: relative;
+.ok {
+  display: flex;
+}
+
+.left {
+  position: relative;
   width: 247px;
   float: left;
 }
@@ -21,106 +29,135 @@
   position: absolute;
 }
 
-#girl {width: 125px;
+#girl {
+  width: 125px;
   padding-top: 48%;
   position: absolute
 }
 
-.down {float: left;
+.down {
+  float: left;
   padding-left: 17%;
-  width: 57%;}
+  width: 57%;
+}
 
-.footer {align-content:center;
+.footer {
+  align-content: center;
   padding-top: 4%;
-  padding-left: 28%}
+  padding-left: 28%
+}
 
-.right {position: relative; 
+.right {
+  position: relative;
   padding-left: 3%;
 }
 
-.box1 {position:absolute;
-  width: 219px;}
+.box1 {
+  position: absolute;
+  width: 219px;
+}
 
-#andy {width: 188px}
+#andy {
+  width: 188px
+}
 
 
 
 
 
-h1{ padding-left: 28%;
+
+h1 {
+  padding-left: 28%;
   color: #760000;
- font-size: 50pt;
+  font-size: 50pt;
   font-style: italic;
- font-family:curly_milie;}
+  font-family: curly_milie;
+}
 
-.social {width: 6%}
+.social {
+  width: 6%
+}
 
 @font-face {
   font-family: curly_millie;
   src: url("C:\Users\LUCY\Desktop\Website_Assessment\fonts") format (curly_millie);
 }
-h2{color: #e59e03;
+
+h2 {
+  color: #e59e03;
   font-size: 45pt;
   font-style: italic;
-  font-family:delmon_delicate_script;}
+  font-family: delmon_delicate_script;
+}
 
-h3{color: #760000;
+h3 {
+  color: #760000;
   font-size: 20pt;
   font-style: italic;
-  font-family: delmon_delicate_script;}
+  font-family: delmon_delicate_script;
+}
 
 @font-face {
   font-family: delmon_delicate_script;
   src: url("C:\Users\LUCY\Desktop\Website_Assessment\fonts");
 }
 
-p{color: #760000;
+p {
+  color: #760000;
   font-size: 15pt;
   font-style: normal;
   font-family: curly_marlie;
 }
 
 @font-face {
-  font-family:curly_marlie;
+  font-family: curly_marlie;
   src: url("C:\Users\LUCY\Desktop\Website_Assessment\fonts");
 }
 
-.footer {padding-left: 31%;}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
+.footer {
+  padding-left: 31%;
 }
 
+
+
 /* Create two equal columns that sits next to each other */
+
+
 .column {
   flex: 50%;
   padding: 5px;
-}
-
-.column {
   margin-top: 5px;
   vertical-align: middle;
-  width: 42%;
+  width: 15%;
 }
 
-img {width: 94%;
-  margin-top: 15px;}
+.row {
+  direction: row;
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+}
+
+
+img {
+  width: 94%;
+  margin-top: 15px;
+}
 
 
 /* Dropdown Button */
 .dropbtn {
-  background-color:white;
-  color: #e59e03;
+  background-color: white;
+  color: white;
   padding: 15px;
-  font-size: 35px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
+.dropbtn:hover,
+.dropbtn:focus {
   background-color: #760000;
 }
 
@@ -136,7 +173,7 @@ img {width: 94%;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 6px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -149,8 +186,11 @@ img {width: 94%;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f3caee;}
+.dropdown-content a:hover {
+  background-color: #f3caee;
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-
+.show {
+  display: block;
+}
