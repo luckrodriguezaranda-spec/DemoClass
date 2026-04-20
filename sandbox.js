@@ -129,8 +129,7 @@ window.loadImages = function (category) {
             "Images/Beauty/b7.jpg",
             "Images/Beauty/b8.jpg",
             "Images/Beauty/b9.jpg",
-            "Images/Beauty/b10.jpg",
-            "Images/Beauty/b11.jpg"
+            "Images/Beauty/b10.jpg"
         ],
         fashion: [
             "Images/Fashion/f1.jpg",
@@ -171,16 +170,16 @@ window.loadImages = function (category) {
             
         ],
         knowledge: [
-            "Images/Knowledge/k1.jpg",
-            "Images/Knowledge/k2.jpg",
-            "Images/Knowledge/k3.jpg",
-            "Images/Knowledge/k4.jpg",
-            "Images/Knowledge/k5.jpg",
-            "Images/Knowledge/k6.jpg",
-            "Images/Knowledge/k7.jpg",
-            "Images/Knowledge/k8.jpg",
-            "Images/Knowledge/k9.jpg",
-            "Images/Knowledge/k10.jpg"   
+            "Images/Knowlwdge/k1.jpg",
+            "Images/Knowlwdge/k2.jpg",
+            "Images/Knowlwdge/k3.jpg",
+            "Images/Knowlwdge/k4.jpg",
+            "Images/Knowlwdge/k5.jpg",
+            "Images/Knowlwdge/k6.jpg",
+            "Images/Knowlwdge/k7.jpg",
+            "Images/Knowlwdge/k8.jpg",
+            "Images/Knowlwdge/k9.jpg",
+            "Images/Knowlwdge/k10.jpg"   
         ],
         money: [
             "Images/Money/m1.jpg",
