@@ -145,10 +145,11 @@ img {
 }
 
 
+
 /* Dropdown Button */
 .dropbtn {
   background-color: white;
-  color: white;
+  color: #e59e03;
   padding: 15px;
   font-size: 16px;
   border: none;
@@ -193,4 +194,26 @@ img {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
   display: block;
+}
+
+
+
+.mainbutton{
+  color: #f3caee;
+  border: none;
+  border-radius: 10px;
+}
+
+
+.links{
+width: 6%;
+height: 6%;
+}
+
+.socialimg{
+}
+
+.footerimgs{
+  display: flex;
+  flex-direction: row;
 }
