@@ -122,16 +122,124 @@ window.loadImages = function (category) {
         beauty: [
             "Images/Beauty/b1.jpg",
             "Images/Beauty/b2.jpg",
-            "Images/Beauty/b3.jpg"
+            "Images/Beauty/b3.jpg",
+            "Images/Beauty/b4.jpg",
+            "Images/Beauty/b5.jpg",
+            "Images/Beauty/b6.jpg",
+            "Images/Beauty/b7.jpg",
+            "Images/Beauty/b8.jpg",
+            "Images/Beauty/b9.jpg",
+            "Images/Beauty/b10.jpg"
         ],
         fashion: [
-           
+            "Images/Fashion/f1.jpg",
+            "Images/Fashion/f2.jpg",
+            "Images/Fashion/f3.jpg",
+            "Images/Fashion/f4.jpg",
+            "Images/Fashion/f5.jpg",
+            "Images/Fashion/f6.jpg",
+            "Images/Fashion/f7.jpg",
+            "Images/Fashion/f8.jpg",
+            "Images/Fashion/f9.jpg",
+            "Images/Fashion/f10.jpg" 
         ],
         emotions: [
-           
+            "Images/Emotions/em1.jpg",
+            "Images/Emotions/em2.jpg",
+            "Images/Emotions/em3.jpg",
+            "Images/Emotions/em4.jpg",
+            "Images/Emotions/em5.jpg",
+            "Images/Emotions/em6.jpg",
+            "Images/Emotions/em7.jpg",
+            "Images/Emotions/em8.jpg",
+            "Images/Emotions/em9.jpg",
+            "Images/Emotions/em10.jpg" 
         ],
         exercise: [
+            "Images/Exercise/ex1.jpg",
+            "Images/Exercise/ex2.jpg",
+            "Images/Exercise/ex3.jpg",
+            "Images/Exercise/ex4.jpg",
+            "Images/Exercise/ex5.jpg",
+            "Images/Exercise/ex6.jpg",
+            "Images/Exercise/ex7.jpg",
+            "Images/Exercise/ex8.jpg",
+            "Images/Exercise/ex9.jpg",
+            "Images/Exercise/ex10.jpg"
+
             
+        ],
+        knowledge: [
+            "Images/Knowlwdge/k1.jpg",
+            "Images/Knowlwdge/k2.jpg",
+            "Images/Knowlwdge/k3.jpg",
+            "Images/Knowlwdge/k4.jpg",
+            "Images/Knowlwdge/k5.jpg",
+            "Images/Knowlwdge/k6.jpg",
+            "Images/Knowlwdge/k7.jpg",
+            "Images/Knowlwdge/k8.jpg",
+            "Images/Knowlwdge/k9.jpg",
+            "Images/Knowlwdge/k10.jpg"   
+        ],
+        money: [
+            "Images/Money/m1.jpg",
+            "Images/Money/m2.jpg",
+            "Images/Money/m3.jpg",
+            "Images/Money/m4.jpg",
+            "Images/Money/m5.jpg",
+            "Images/Money/m6.jpg",
+            "Images/Money/m7.jpg",
+            "Images/Money/m8.jpg",
+            "Images/Money/m9.jpg",
+            "Images/Money/m10.jpg"
+        ],
+        pets: [
+            "Images/Pets/p1.jpg",
+            "Images/Pets/p2.jpg",
+            "Images/Pets/p3.jpg",
+            "Images/Pets/p4.jpg",
+            "Images/Pets/p5.jpg",
+            "Images/Pets/p6.jpg",
+            "Images/Pets/p7.jpg",
+            "Images/Pets/p8.jpg",
+            "Images/Pets/p9.jpg",
+            "Images/Pets/p10.jpg"
+        ],
+        relationships:  [
+            "Images/Relationships/r1.jpg",
+            "Images/Relationships/r2.jpg",
+            "Images/Relationships/r3.jpg",
+            "Images/Relationships/r4.jpg",
+            "Images/Relationships/r5.jpg",
+            "Images/Relationships/r6.jpg",
+            "Images/Relationships/r7.jpg",
+            "Images/Relationships/r8.jpg",
+            "Images/Relationships/r9.jpg",
+            "Images/Relationships/r10.jpg" 
+        ],
+        skills: [
+            "Images/Skills/s1.jpg",
+            "Images/Skills/s2.jpg",
+            "Images/Skills/s3.jpg",
+            "Images/Skills/s4.jpg",
+            "Images/Skills/s5.jpg",
+            "Images/Skills/s6.jpg",
+            "Images/Skills/s7.jpg",
+            "Images/Skills/s8.jpg",
+            "Images/Skills/s9.jpg",
+            "Images/Skills/s10.jpg"  
+        ],
+        hobbies: [
+            "Images/Hobbies/h1.jpg",
+            "Images/Hobbies/h2.jpg",
+            "Images/Hobbies/h3.jpg",
+            "Images/Hobbies/h4.jpg",
+            "Images/Hobbies/h5.jpg",
+            "Images/Hobbies/h6.jpg",
+            "Images/Hobbies/h7.jpg",
+            "Images/Hobbies/h8.jpg",
+            "Images/Hobbies/h9.jpg",
+            "Images/Hobbies/h10.jpg"
         ]
     };
 
