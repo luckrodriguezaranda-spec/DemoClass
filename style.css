@@ -142,6 +142,14 @@ p {
 img {
   width: 94%;
   margin-top: 15px;
+      
+}
+
+.img1 {
+      border-color: #EDB2A8;
+      border:solid;
+      border-radius: 56px;
+      
 }
 
 
