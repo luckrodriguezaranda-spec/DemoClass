@@ -257,3 +257,12 @@ height: 6%;
   display: flex;
   flex-direction: row;
 }
+
+
+body {
+  background-image: url("Images/z/transition.jpg/");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
