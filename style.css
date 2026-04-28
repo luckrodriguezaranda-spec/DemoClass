@@ -142,6 +142,44 @@ p {
 img {
   width: 94%;
   margin-top: 15px;
+      
+}
+
+.img1 {
+      border:solid;
+      width: 94%;
+      margin-top: 15px;
+      border-color: #a48fc4;
+      border-radius: 56px;
+      border-width: 10px;
+      
+}
+
+.img2{
+  border:solid;
+      width: 94%;
+      margin-top: 15px;
+      border-color: #f3caee;
+      border-radius: 56px;
+      border-width: 10px;
+}
+
+.img3{
+  border:solid;
+      width: 94%;
+      margin-top: 15px;
+      border-color: #760000;
+      border-radius: 56px;
+      border-width: 10px;
+}
+
+.img4{
+  border:solid;
+      width: 94%;
+      margin-top: 15px;
+      border-color: #e59e03;
+      border-radius: 56px;
+      border-width: 10px;
 }
 
 
@@ -218,6 +256,15 @@ height: 6%;
 .footerimgs{
   display: flex;
   flex-direction: row;
+}
+
+
+body {
+  background-image: url("Images/z/transition.jpg/");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 
