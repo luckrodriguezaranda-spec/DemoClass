@@ -63,166 +63,166 @@
         </div>
     </div>
 
-        <script>
-            const modalOverlay = document.getElementById("modalOverlay");
-            const modalContent = document.getElementById("modalContent");
-            const closeButtons = [document.getElementById("closeModalBtn"), document.getElementById("closeModalBtn2")];
+    <script>
+        const modalOverlay = document.getElementById("modalOverlay");
+        const modalContent = document.getElementById("modalContent");
+        const closeButtons = [document.getElementById("closeModalBtn"), document.getElementById("closeModalBtn2")];
 
-            // Function to open modal
-            function openModal() {
-                modalOverlay.classList.remove("hidden");
-                setTimeout(() => {
-                    modalContent.classList.remove("scale-95", "opacity-0");
-                    modalContent.classList.add("scale-100", "opacity-100");
-                }, 10);
+        // Function to open modal
+        function openModal() {
+            modalOverlay.classList.remove("hidden");
+            setTimeout(() => {
+                modalContent.classList.remove("scale-95", "opacity-0");
+                modalContent.classList.add("scale-100", "opacity-100");
+            }, 10);
+        }
+
+        // Function to close modal
+        function closeModal() {
+            modalContent.classList.remove("scale-100", "opacity-100");
+            modalContent.classList.add("scale-95", "opacity-0");
+            setTimeout(() => {
+                modalOverlay.classList.add("hidden");
+            }, 300);
+        }
+
+        // Close when clicking outside
+        modalOverlay.addEventListener("click", closeModal);
+
+        // Close buttons
+        closeButtons.forEach(btn => btn.addEventListener("click", closeModal));
+
+        // Auto open modal on page load
+        window.addEventListener("load", () => {
+            openModal();
+        });
+
+        // Close with ESC key
+        window.addEventListener("keydown", e => {
+            if (e.key === "Escape" && !modalOverlay.classList.contains("hidden")) {
+                closeModal();
             }
+        });
+    </script>
+    <div class="header">
+        <header>
+            <a href="index.html">
+                <img id="log" src="images/l1.png">
+            </a>
 
-            // Function to close modal
-            function closeModal() {
-                modalContent.classList.remove("scale-100", "opacity-100");
-                modalContent.classList.add("scale-95", "opacity-0");
-                setTimeout(() => {
-                    modalOverlay.classList.add("hidden");
-                }, 300);
-            }
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn" id="menu">
+                    ☰
+                </button>
+                <div id="myDropdown" class="dropdown-content">
 
-            // Close when clicking outside
-            modalOverlay.addEventListener("click", closeModal);
-
-            // Close buttons
-            closeButtons.forEach(btn => btn.addEventListener("click", closeModal));
-
-            // Auto open modal on page load
-            window.addEventListener("load", () => {
-                openModal();
-            });
-
-            // Close with ESC key
-            window.addEventListener("keydown", e => {
-                if (e.key === "Escape" && !modalOverlay.classList.contains("hidden")) {
-                    closeModal();
-                }
-            });
-        </script>
-        <div class="header">
-            <header>
-                <a href="index.html">
-                    <img id="log" src="images/l1.png">
-                </a>
-
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn" id="menu">
-                        ☰
-                    </button>
-                    <div id="myDropdown" class="dropdown-content">
-
-                        <a href="createboard.html"> Create a board </a>
-                        <a href="beauty.html"> Beauty </a>
-                        <a href="fashion.html"> Fashion</a>
-                        <a href="relationships.html"> Relationships</a>
-                        <a href="hobbies.html"> Hobbies</a>
-                        <a href="pets.html"> Pets</a>
-                        <a href="skills.html"> Skills</a>
-                        <a href="knowledge.html"> Knowledge</a>
-                        <a href="money.html"> Money</a>
-                        <a href="emotions.html"> Emotions</a>
-                        <a href="exercise.html"> Exercise</a>
-
-                    </div>
-                </div>
-                <hr>
-            </header>
-        </div>
-
-        <div class="container">
-            <ul class="nav nav-tabs">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="beauty.html">Beauty </a></li>
-                        <li><a href="emotions.html">Emotions</a></li>
-                        <li><a href="exercise.html">Exercise</a></li>
-                        <li><a href="fashion.html">Fashion</a></li>
-                        <li><a href="hobbies.html">Hobbies</a></li>
-                        <li><a href="knowledge.html">Knowledge</a></li>
-                        <li><a href="money.html">Money</a></li>
-                        <li><a href="pets.html">Pets</a></li>
-                        <li><a href="relationships.html">Relationships</a></li>
-                        <li><a href="skills.html">Skills</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-
-        <div class="container-fluid mt-5 flex justify-center">
-
-            <div id="image-sandbox" class="w-full max-w-none bg-white shadow-lg rounded-xl p-6">
-
-                <div class="flex flex-col lg:flex-row gap-6">
-
-                    <div class="lg:w-1/4 p-4 bg-gray-100 rounded-lg flex justify-center">
-                        <div class="flex flex-wrap lg:flex-col gap-3">
-                            <ul class="nav nav-tabs">
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span
-                                            class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <!-- add the rest of the menu list-->
-                                        <li><a href="#" onclick="loadImages('beauty')">Beauty</a></li>
-                                        <li><a href="#" onclick="loadImages('emotions')">Emotions</a></li>
-                                        <li><a href="#" onclick="loadImages('exercise')">Exercise</a></li>
-                                        <li><a href="#" onclick="loadImages('fashion')">Fashion</a></li>
-                                        <li><a href="#" onclick="loadImages('hobbies')">Hobbies</a></li>
-                                        <li><a href="#" onclick="loadImages('knowledge')">Knowledge</a></li>
-                                        <li><a href="#" onclick="loadImages('money')">Money</a></li>
-                                        <li><a href="#" onclick="loadImages('pets')">Pets</a></li>
-                                        <li><a href="#" onclick="loadImages('relationships')">Relationships</a></li>
-                                        <li><a href="#" onclick="loadImages('skills')">Skills</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <div id="image-list" class="mt-4 flex flex-wrap gap-2"></div>
-                        </div>
-                    </div>
-
-                    <div class="lg:w-3/4 flex flex-col items-center">
-
-                        <canvas id="canvas" class="w-full h-[600px] border-2 border-dashed rounded-lg bg-white">
-                        </canvas>
-
-                        <button id="clear" class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-                            Clear
-                        </button>
-                    </div>
+                    <a href="createboard.html"> Create a board </a>
+                    <a href="beauty.html"> Beauty </a>
+                    <a href="fashion.html"> Fashion</a>
+                    <a href="relationships.html"> Relationships</a>
+                    <a href="hobbies.html"> Hobbies</a>
+                    <a href="pets.html"> Pets</a>
+                    <a href="skills.html"> Skills</a>
+                    <a href="knowledge.html"> Knowledge</a>
+                    <a href="money.html"> Money</a>
+                    <a href="emotions.html"> Emotions</a>
+                    <a href="exercise.html"> Exercise</a>
 
                 </div>
             </div>
+            <hr>
+        </header>
+    </div>
 
-        </div>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="beauty.html">Beauty </a></li>
+                    <li><a href="emotions.html">Emotions</a></li>
+                    <li><a href="exercise.html">Exercise</a></li>
+                    <li><a href="fashion.html">Fashion</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="knowledge.html">Knowledge</a></li>
+                    <li><a href="money.html">Money</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="relationships.html">Relationships</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-        <script src="sandbox.js"></script>
+    <div class="container-fluid mt-5 flex justify-center">
 
-        <div class="footer">
-            <footer>
-                <p> 2025 </p>
-                <p class="ftext"> All images are from public domain or taken by MyVisionBoard</p>
-                <p class="ftext"> lilylav1111@gmail.com</p>
-                <div class="footerimgs">
-                    <a href="https://www.instagram.com/myvisionboard_mvb/" class="links">
-                        <img src="images/social/ig.png" class="socialimg">
-                    </a>
-                    <a href="https://mx.pinterest.com/myvisionboard_mvb/" class="links">
-                        <img src="images/social/pinterest.png" class="socialimg">
-                    </a>
-                    <a class="links">
-                        <img src="images/social/mail.png" class="socialimg">
+        <div id="image-sandbox" class="w-full max-w-none bg-white shadow-lg rounded-xl p-6">
 
-                    </a>
+            <div class="flex flex-col lg:flex-row gap-6">
+
+                <div class="lg:w-3/4 flex flex-col items-center">
+
+                    <canvas id="canvas" class="w-full h-[600px] border-2 border-dashed rounded-lg bg-white">
+                    </canvas>
+
+                    <button id="clear" class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                        Clear
+                    </button>
+                </div>
+                <div class="lg:w-1/4 p-4 bg-gray-100 rounded-lg flex justify-center">
+                    <div class="flex flex-wrap lg:flex-col gap-3">
+                        <ul class="nav nav-tabs">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span
+                                        class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <!-- add the rest of the menu list-->
+                                    <li><a href="#" onclick="loadImages('beauty')">Beauty</a></li>
+                                    <li><a href="#" onclick="loadImages('emotions')">Emotions</a></li>
+                                    <li><a href="#" onclick="loadImages('exercise')">Exercise</a></li>
+                                    <li><a href="#" onclick="loadImages('fashion')">Fashion</a></li>
+                                    <li><a href="#" onclick="loadImages('hobbies')">Hobbies</a></li>
+                                    <li><a href="#" onclick="loadImages('knowledge')">Knowledge</a></li>
+                                    <li><a href="#" onclick="loadImages('money')">Money</a></li>
+                                    <li><a href="#" onclick="loadImages('pets')">Pets</a></li>
+                                    <li><a href="#" onclick="loadImages('relationships')">Relationships</a></li>
+                                    <li><a href="#" onclick="loadImages('skills')">Skills</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div id="image-list" class="mt-4 flex flex-wrap gap-2"></div>
+                    </div>
                 </div>
 
-            </footer>
+
+
+            </div>
         </div>
+
+    </div>
+
+    <script src="sandbox.js"></script>
+
+    <div class="footer">
+        <footer>
+            <p> 2025 </p>
+            <p class="ftext"> All images are from public domain or taken by MyVisionBoard</p>
+            <p class="ftext"> lilylav1111@gmail.com</p>
+            <div class="footerimgs">
+                <a href="https://www.instagram.com/myvisionboard_mvb/" class="links">
+                    <img src="images/social/ig.png" class="socialimg">
+                </a>
+                <a href="https://mx.pinterest.com/myvisionboard_mvb/" class="links">
+                    <img src="images/social/pinterest.png" class="socialimg">
+                </a>
+                <a class="links">
+                    <img src="images/social/mail.png" class="socialimg">
+
+                </a>
+            </div>
+
+        </footer>
+    </div>
 
 </body>
 

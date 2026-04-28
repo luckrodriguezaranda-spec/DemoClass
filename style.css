@@ -205,6 +205,7 @@ img {
   position: relative;
   display: inline-block;
   color: #760000;
+  
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -223,6 +224,12 @@ img {
   padding: 10px 8px;
   text-decoration: none;
   display: block;
+}
+
+
+
+.dropdown-menu{
+  background-color: pink;
 }
 
 /* Change color of dropdown links on hover */
@@ -277,7 +284,6 @@ body {
   z-index: -1;
 }
 
-/* Add some content at the bottom of the video/page */
 .content {
   position: fixed;
   bottom: 0;
@@ -287,7 +293,6 @@ body {
   padding: 20px;
 }
 
-/* Style the button used to pause/play the video */
 #myBtn {
   width: 200px;
   font-size: 18px;
