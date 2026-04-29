@@ -229,7 +229,8 @@ img {
 
 
 .dropdown-menu{
-  background-color: pink;
+  background-color: #f3caee;
+  
 }
 
 /* Change color of dropdown links on hover */
@@ -243,6 +244,20 @@ img {
   display: block;
 }
 
+/* Sofiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii */
+.mi-caja {
+  background-color: #f3caee;
+}
+
+.mi-hover a:hover {
+  background-color: #a48fc4;
+  
+}
+
+.dropdown-toggle {
+  background-color: #f3caee;
+}
+  
 
 
 .mainbutton{
