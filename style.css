@@ -247,15 +247,23 @@ img {
 /* Sofiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii */
 .mi-caja {
   background-color: #f3caee;
+  color: #f3caee;
+  }
+
+.bg-white {
+  
 }
+
 
 .flex-wrap {
   background-color: #f3caee;
+  color: #f3caee;
 }
 
 
 .dropdown-toggle {
   background-color: #f3caee;
+  color: #760000;
 }
   
 
