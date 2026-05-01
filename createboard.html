@@ -36,7 +36,8 @@
 </head>
 
 <body>
-    <div class="">
+     
+     <div class="">
         <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center"
             role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 
@@ -62,6 +63,8 @@
             </div>
         </div>
     </div>
+   
+
 
     <script>
         const modalOverlay = document.getElementById("modalOverlay");
@@ -137,7 +140,7 @@
     <div class="container">
         <ul class="nav nav-tabs">
             <li class="dropdown">
-                
+
             </li>
         </ul>
     </div>
@@ -157,7 +160,10 @@
                         Clear
                     </button>
                 </div>
-                <div class="lg:w-1/4 mi-caja p-4 bg-gray-100 rounded-lg flex justify-center">
+                <!-- In line  164 you had a command for bg-gray, which stands for "background color: gray" (I put it
+                 there when i created your board. I changed it for bg-[#f3caee] so it's background color : (your pink 
+                 color), you don't need any "mi-caja" class anymore :) )-->
+                <div class="lg:w-1/4 p-4 bg-[#f3caee] rounded-lg flex justify-center border-solid border-black">
                     <div class="flex flex-wrap lg:flex-col gap-3">
                         <ul class="nav nav-tabs">
                             <li class="dropdown">
