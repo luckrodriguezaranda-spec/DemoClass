@@ -205,6 +205,7 @@ img {
   position: relative;
   display: inline-block;
   color: #760000;
+  
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -225,6 +226,13 @@ img {
   display: block;
 }
 
+
+
+.dropdown-menu{
+  background-color: #f3caee;
+  
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #a48fc4;
@@ -236,14 +244,21 @@ img {
   display: block;
 }
 
+.flex-wrap {
+  background-color: #f3caee;
+  color: #f3caee;
+}
 
-
+.dropdown-toggle {
+  background-color: #f3caee;
+  color: #760000;
+}
+  
 .mainbutton{
   color: #f3caee;
   border: none;
   border-radius: 10px;
 }
-
 
 .links{
 width: 6%;
@@ -265,4 +280,38 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+}
+
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
 }
